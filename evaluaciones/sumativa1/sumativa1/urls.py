@@ -6,5 +6,6 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', include('productos.urls')),
-    path('', RedirectView.as_view(url='/productos/consulta', permanent=True))
+    path('productos/', RedirectView.as_view(url='/productos/consulta', permanent = True)),
+    path('', RedirectView.as_view(url='/productos/consulta', permanent=True)),
 ]
