@@ -1,10 +1,10 @@
-/* Estilos para centrar el formulario */
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Hace que la página ocupe al menos el 100% de la altura */
-    background-color: #f0f0f0; /* Fondo gris claro para darle mejor apariencia */
+    min-height: 100vh; 
+    background-color: #f0f0f0; 
     margin: 0;
     font-family: Arial;
 }
@@ -19,9 +19,9 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px; /* Ancho máximo del formulario */
-    width: 100%; /* Para que no sobrepase el ancho máximo */
-    margin: auto; /* Centra el formulario */
+    max-width: 400px; 
+    width: 100%;
+    margin: auto; 
 }
 
 form label {
@@ -33,7 +33,7 @@ form label {
 form input[type="text"],
 form input[type="date"],
 form input[type="submit"] {
-    width: 94%; /* Hace que los inputs ocupen todo el ancho del formulario */
+    width: 94%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -53,7 +53,7 @@ form input[type="submit"]:hover {
 }
 
 form button {
-    background-color: #5dcc6e; /* Green */
+    background-color: #5dcc6e;
     border: none;
     color: white;
     padding: 12px 14px;
@@ -63,14 +63,13 @@ form button {
     font-size: 16px;
     border-radius: 8px;
 }
-/* Contenedor para los botones */
+
 .form-buttons {
     display: flex;
-    justify-content: space-between; /* Alinea los botones uno a la izquierda y otro a la derecha */
+    justify-content: space-between; 
     margin-top: 20px;
 }
 
-/* Estilo del botón de consulta */
 .consulta-button {
     background-color: #007bff;
     border: none;
@@ -97,7 +96,6 @@ form button {
     margin: auto;
 }
 
-/* Estilo para las listas de productos en la página de consulta */
 ul {
     list-style-type: none;
     padding: 0;
@@ -117,7 +115,6 @@ ul li {
     border-bottom: 1px solid #ccc;
 }
 
-/* Botones en la página de consulta */
 .consulta-buttons {
     margin-top: 20px;
     display: flex;
