@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Productos</title>
+    <link rel="stylesheet" href="{% static 'productos/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta de Productos</h1>
+        <ul>
+            {% for producto in productos %}
+                <li>
+                    <strong>Código:</strong> {{ producto.codigo }}<br>
+                    <strong>Nombre:</strong> {{ producto.nombre }}<br>
+                    <strong>Marca:</strong> {{ producto.marca }}<br>
+                    <strong>Fecha de Vencimiento:</strong> {{ producto.fecha_vencimiento }}<br>
+                </li>
+            {% empty %}
+                <li>No hay productos registrados.</li>
+            {% endfor %}
+        </ul>
+        <div class="consulta-buttons">
+            <a href="{% url 'registro' %}" class="consulta-button">Registrar Nuevo Producto</a>
+        </div>
+    </div>
+</body>
+</html>

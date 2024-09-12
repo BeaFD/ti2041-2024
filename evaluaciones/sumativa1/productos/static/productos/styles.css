@@ -1,0 +1,125 @@
+/* Estilos para centrar el formulario */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Hace que la página ocupe al menos el 100% de la altura */
+    background-color: #f0f0f0; /* Fondo gris claro para darle mejor apariencia */
+    margin: 0;
+    font-family: Arial;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Ancho máximo del formulario */
+    width: 100%; /* Para que no sobrepase el ancho máximo */
+    margin: auto; /* Centra el formulario */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="submit"] {
+    width: 94%; /* Hace que los inputs ocupen todo el ancho del formulario */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+form button {
+    background-color: #5dcc6e; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+/* Contenedor para los botones */
+.form-buttons {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones uno a la izquierda y otro a la derecha */
+    margin-top: 20px;
+}
+
+/* Estilo del botón de consulta */
+.consulta-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 12px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.consulta-button:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+}
+
+/* Estilo para las listas de productos en la página de consulta */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.result-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Botones en la página de consulta */
+.consulta-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
