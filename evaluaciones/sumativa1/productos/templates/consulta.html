@@ -11,18 +11,74 @@
 <body>
     <div class="container">
         <h1>Consulta de Productos</h1>
-        <ul>
-            {% for producto in productos %}
-                <li>
-                    <strong>Código:</strong> {{ producto.codigo }}<br>
-                    <strong>Nombre:</strong> {{ producto.nombre }}<br>
-                    <strong>Marca:</strong> {{ producto.marca }}<br>
-                    <strong>Fecha de Vencimiento:</strong> {{ producto.fecha_vencimiento }}<br>
-                </li>
-            {% empty %}
-                <li>No hay productos registrados.</li>
-            {% endfor %}
-        </ul>
+        <form method="get">
+            <div class="filters">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" value="{{ request.GET.nombre }}">
+                
+                <label for="marca">Marca:</label>
+                <select name="marca" id="marca">
+                    <option value="">Todas</option>
+                    {% for marca in marcas %}
+                        <option value="{{ marca.id }}" {% if request.GET.marca == marca.id|stringformat:"s" %}selected{% endif %}>
+                            {{ marca.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <label for="categoria">Categoría:</label>
+                <select name="categoria" id="categoria">
+                    <option value="">Todas</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}" {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>
+                            {{ categoria.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <label for="caracteristica">Característica:</label>
+                <select name="caracteristica" id="caracteristica">
+                    <option value="">Todas</option>
+                    {% for caracteristica in caracteristicas %}
+                        <option value="{{ caracteristica.id }}" {% if request.GET.caracteristica == caracteristica.id|stringformat:"s" %}selected{% endif %}>
+                            {{ caracteristica.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+                
+                <button type="submit">Aplicar Filtros</button>
+            </div>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Características</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.marca }}</td>
+                        <td>{{ producto.categoria }}</td>
+                        <td>
+                            {% for caracteristica in producto.caracteristicas.all %}
+                                {{ caracteristica.nombre }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No hay productos registrados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         <div class="consulta-buttons">
             <a href="{% url 'registro' %}" class="consulta-button">Registrar Nuevo Producto</a>
         </div>

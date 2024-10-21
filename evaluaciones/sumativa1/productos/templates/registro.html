@@ -14,17 +14,47 @@
     <form method="POST">
         <h1>Registrar Producto</h1>
         {% csrf_token %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
         <label for="codigo">Código:</label>
         <input type="text" name="codigo" required><br>
+
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required><br>
+
         <label for="marca">Marca:</label>
-        <input type="text" name="marca" required><br>
-        <label for="fecha_vencimiento">Fecha de Vencimiento:</label>
-        <input type="date" name="fecha_vencimiento" required><br>
+        <select name="marca" required>
+            <option value="">Seleccione una marca</option>
+            {% for marca in marcas %}
+                <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="categoria">Categoría:</label>
+        <select name="categoria">
+            <option value="">Seleccione una categoría</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select><br>
+
+        <div id="caracteristicas-container">
+            <h2>Características</h2>
+            {% for caracteristica in caracteristicas %}
+                <div class="caracteristica-section">
+                    <label for="valor_{{ caracteristica.id }}">{{ caracteristica.nombre }}:</label>
+                    <input type="text" name="valor_{{ caracteristica.id }}" placeholder="Ingrese el valor">
+                </div>
+            {% endfor %}
+        </div>
+
         <div class="form-buttons">
             <a href="{% url 'consulta' %}" class="consulta-button">Volver</a>
             <button type="submit">Registrar</button>
         </div>
     </form>
 </body>
+
+</html>

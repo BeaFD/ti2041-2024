@@ -1,0 +1,335 @@
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* GestionDeProductos/static/GestionDeProductos/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    margin: auto;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    font-size: 14px;
+}
+
+form input, form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.caracteristica-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.caracteristica-container select {
+    width: calc(70% - 10px);
+}
+
+.caracteristica-container button {
+    width: 25%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.caracteristica-container button:hover {
+    background-color: #45a049;
+}
+
+.caracteristica-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.caracteristica-entry label {
+    width: 30%;
+}
+
+.caracteristica-entry input {
+    width: calc(50% - 10px);
+}
+
+.caracteristica-entry button {
+    width: 15%;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.caracteristica-entry button:hover {
+    background-color: #e53935;
+}
+
+button[type="submit"], .go-back-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover, .go-back-button:hover {
+    background-color: #45a049;
+}
+
+.go-back-button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 20px; /* Adjust line-height to center text vertically */
+    margin-bottom: 10px;
+    width: 380px;
+}
+
+a:hover {
+    background-color: #45a049;
+}
+
+table.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table.product-table th, table.product-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table.product-table th {
+    background-color: #f2f2f2;
+}
+
+table.product-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.product-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* GestionDeProductos/static/GestionDeProductos/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+form input, form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.caracteristica-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.caracteristica-container select {
+    width: calc(70% - 10px);
+}
+
+.caracteristica-container button {
+    width: 25%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.caracteristica-container button:hover {
+    background-color: #45a049;
+}
+
+.caracteristica-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.caracteristica-entry label {
+    width: 30%;
+}
+
+.caracteristica-entry input {
+    width: calc(50% - 10px);
+}
+
+.caracteristica-entry button {
+    width: 15%;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.caracteristica-entry button:hover {
+    background-color: #e53935;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-left: 180px;
+}
+.search-form div {
+    display: flex;
+    flex-direction: row; /* Align elements horizontally */
+    align-items: center;
+}
+.search-form select, .search-form input, .search-form button, .search-form .show-all-button {
+    padding: 5px;
+    font-size: 14px;
+    height: 30px; /* Ensure consistent height for all form controls */
+}
+.search-form select {
+    width: 150px; /* Set a wider width for better readability */
+}
+.search-form input {
+    width: 300px; /* Make the input a bit wider */
+    height: 20px;
+}
+.search-form button, .search-form .show-all-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 5px;
+    height: 30px;
+}
+.search-form button:hover, .search-form .show-all-button:hover {
+    background-color: #45a049;
+}
+.show-all-button {
+    width: auto; /* Allow the width to adjust based on content */
+    align-content: center;
+    height: 15px;
+}

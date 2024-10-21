@@ -120,3 +120,63 @@ ul li {
     display: flex;
     justify-content: space-between;
 }
+
+/* Custom combobox styling */
+.combobox {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.combobox input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.combobox select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Styles for characteristic groups */
+.caracteristica-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.caracteristica-group input {
+    width: calc(50% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.caracteristica-group button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.caracteristica-group button:hover {
+    background-color: darkred;
+}
+
+/* Form buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}

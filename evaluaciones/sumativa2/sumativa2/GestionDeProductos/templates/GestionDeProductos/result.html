@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'GestionDeProductos/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro exitoso</h1>
+        <p>Este producto se ha guardado exitosamente:</p>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Marca</th>
+                    <th>Caracteristicas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.categoria.name }}</td>
+                    <td>{{ producto.marca.name }}</td>
+                    <td>
+                        <ul>
+                            {% for caracteristica in producto.productocaracteristica_set.all %}
+                                <li>{{ caracteristica.caracteristica.name }}: {{ caracteristica.valor }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/productos/" class="button">Ver todos los productos</a>
+    </div>
+</body>
+</html>

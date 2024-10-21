@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro Producto</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'GestionDeProductos/styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registro Producto</h1>
+        <form method="post" id="producto-form">
+            {% csrf_token %}
+            {{ registro.as_p }}
+            <div class="caracteristica-container">
+                <label for="caracteristica-select">Añadir Caracteristica:</label>
+                <select id="caracteristica-select">
+                    <option value="">Seleccionar Caracteristica</option>
+                    {% for caracteristica in caracteristicas %}
+                        <option value="{{ caracteristica.id }}">{{ caracteristica.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="button" onclick="addCaracteristica()">Añadir</button>
+            </div>
+            <div id="caracteristicas-container">
+                {% for pc in producto_caracteristicas %}
+                    <div class="caracteristica-entry">
+                        <label>{{ pc.caracteristica.name }}</label>
+                        <input type="hidden" name="caracteristica" value="{{ pc.caracteristica.id }}">
+                        <input type="text" name="valor" value="{{ pc.valor }}" placeholder="Enter value">
+                        <button type="button" onclick="removeCaracteristica(this)">Quitar</button>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="/productos/" class="go-back-button">Volver</a>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('producto-form').addEventListener('submit', function(event) {
+            var nombre = document.querySelector('input[name="nombre"]');
+            var precio = document.querySelector('input[name="precio"]');
+            var codigo = document.querySelector('input[name="codigo"]');
+            var marca = document.querySelector('select[name="marca"]');
+
+            if (!nombre.value || !precio.value || !codigo.value || !marca.value) {
+                alert('Por favor, complete todos los campos obligatorios.');
+                event.preventDefault();
+            }
+        });
+
+        function addCaracteristica() {
+            var caracteristicaSelect = document.getElementById('caracteristica-select');
+            var selectedCaracteristica = caracteristicaSelect.options[caracteristicaSelect.selectedIndex];
+            var caracteristicaId = selectedCaracteristica.value;
+            var caracteristicaName = selectedCaracteristica.text;
+
+            if (caracteristicaId === "") return;
+
+            var container = document.getElementById('caracteristicas-container');
+            var div = document.createElement('div');
+            div.className = 'caracteristica-entry';
+            div.innerHTML = `
+                <label>${caracteristicaName}</label>
+                <input type="hidden" name="caracteristica" value="${caracteristicaId}">
+                <input type="text" name="valor" placeholder="Enter value">
+                <button type="button" onclick="removeCaracteristica(this)">Quitar</button>
+            `;
+            container.appendChild(div);
+
+            caracteristicaSelect.remove(caracteristicaSelect.selectedIndex);
+        }
+
+        function removeCaracteristica(button) {
+            var div = button.parentElement;
+            var caracteristicaId = div.querySelector('input[name="caracteristica"]').value;
+            var caracteristicaName = div.querySelector('label').innerText;
+
+            var caracteristicaSelect = document.getElementById('caracteristica-select');
+            var option = document.createElement('option');
+            option.value = caracteristicaId;
+            option.text = caracteristicaName;
+            caracteristicaSelect.add(option);
+
+            div.remove();
+        }
+    </script>
+</body>
+</html>
