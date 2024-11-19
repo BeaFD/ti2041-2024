@@ -50,3 +50,4 @@ El debug se mantiene en True, debido a que el debug False necesita la configurac
 CORS
 
 Los headers CORS quedan configurados con todos los hosts habilitados para no tener conflictos en el entorno de desarrollo.
+
