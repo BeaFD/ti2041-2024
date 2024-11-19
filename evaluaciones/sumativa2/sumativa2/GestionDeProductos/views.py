@@ -2,8 +2,28 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
 from .models import Producto, ProductoCaracteristica, Caracteristica, Marca, Categoria
-from django.db.models import Q
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import permission_required, login_required
+from django.http import HttpResponse
+from django.utils import timezone
 
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            request.session['username'] = user.username
+            request.session['login_date'] = str(timezone.now())
+            request.session['role'] = 'ADMIN_PRODUCTS' if user.groups.filter(name='ADMIN_PRODUCTS').exists() else 'USER'
+            return redirect('/productos')
+        else:
+            return HttpResponse('Invalid login')
+    return render(request, 'GestionDeProductos/login.html')
+
+@login_required
+@permission_required('GestionDeProductos.add_producto', raise_exception=True)
 def producto_create(request):
     if request.method == 'POST':
         registro = ProductForm(request.POST)
@@ -19,6 +39,7 @@ def producto_create(request):
         caracteristicas = Caracteristica.objects.all()
     return render(request, 'GestionDeProductos/registro.html', {'registro': registro, 'caracteristicas': caracteristicas})
 
+@login_required
 def index(request):
     productos = Producto.objects.all().prefetch_related('caracteristica', 'categoria', 'marca')
 
@@ -45,6 +66,8 @@ def index(request):
         'caracteristicas': Caracteristica.objects.all(),
     })
 
+@login_required
+@permission_required('GestionDeProductos.change_producto', raise_exception=True)
 def producto_edit(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     if request.method == 'POST':
@@ -67,6 +90,8 @@ def producto_edit(request, pk):
         'producto_caracteristicas': producto_caracteristicas
     })
 
+@login_required
+@permission_required('GestionDeProductos.delete_producto', raise_exception=True)
 def producto_delete(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     if request.method == 'POST':
@@ -74,6 +99,8 @@ def producto_delete(request, pk):
         return redirect('index')
     return render(request, {'producto': producto})
 
+@login_required
+@permission_required('GestionDeProductos.view_producto', raise_exception=True)
 def result(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     return render(request, 'GestionDeProductos/result.html', {'producto': producto})

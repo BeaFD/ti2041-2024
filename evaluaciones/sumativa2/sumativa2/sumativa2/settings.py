@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-$za@5v#09)c4duyr0*lit2v)lziap8(zqr#7s635u**g-8zrzx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'GestionDeProductos',
 ]
 
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'sumativa2.urls'
@@ -70,6 +73,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sumativa2.wsgi.application'
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SESSION_COOKIE_SECURE = True
+
+SESSION_COOKIE_HTTPONLY = True
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -81,6 +94,7 @@ DATABASES = {
     }
 }
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -112,11 +126,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGOUT_REDIRECT_URL = '/'
+
+LOGIN_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

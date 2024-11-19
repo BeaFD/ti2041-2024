@@ -19,8 +19,34 @@ Ejecutar el servidor desde la terminal: `python manage.py runserver`
 
 Funcionamiento
 
-Abrir localhost:8000/productos o 127.0.0.1:8000/productos
+Abrir localhost:8080/ o 127.0.0.1:8080/
 
-Todo es navegable a través de botones, pero tambien se puede acceder a las rutas
-/productos/resultado (Muestra el ultimo registro exitoso)
-/productos/registro (Formulario de registro de nuevos productos)
+Es necesario iniciar sesión antes de empezar. Todo es navegable mediante botones. Cualquier usuario que ingrese con sus credenciales de inicio puede visualizar los productos, sin embargo, solo los usuarios con el permiso de ADMIN_PRODUCTS puede eliminar, editar o eliminar.
+
+---------------------------------------------------------------------------------------------------------------------
+
+Medidas de seguridad:
+
+Protección contra CSRF
+
+Todos los formularios de la aplicación están asegurados con un token CSRF para evitar el envío de instrucciones maliciosas mediante sesiones ya iniciadas.
+
+
+Manejo de sesiones
+
+Las sesiones de los usuarios se vencen cuando el buscador se cierra, solo pueden ser transmitidas mediante conexiones HTTPS para evitar intercepciones en conexiones inseguras, y solo puede ser accesible mediante metodos HTTP(S), no mediante codigo JavaScript, asi mitigando el riesgo de ataques XSS.
+
+
+Logging
+
+Se mantiene un log de eventos importantes para identificar potenciales intentos de acceso fallidos, ataques o intentos de acceder a modulos sin permiso.
+
+
+Información sensible
+
+El debug se mantiene en True, debido a que el debug False necesita la configuracion de un webserver para servir archivos static, por lo que los estilos no se cargarian en un entorno de desarrollo.
+
+
+CORS
+
+Los headers CORS quedan configurados con todos los hosts habilitados para no tener conflictos en el entorno de desarrollo.

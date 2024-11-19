@@ -1,56 +1,9 @@
+{% extends 'GestionDeProductos/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Productos</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'GestionDeProductos/styles.css' %}">
-    <style>
-        .search-form {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            margin-left: 180px;
-        }
-        .search-form div {
-            display: flex;
-            flex-direction: row; /* Align elements horizontally */
-            align-items: center;
-        }
-        .search-form select, .search-form input, .search-form button, .search-form .show-all-button {
-            padding: 5px;
-            font-size: 14px;
-            height: 30px; /* Ensure consistent height for all form controls */
-        }
-        .search-form select {
-            width: 150px; /* Set a wider width for better readability */
-        }
-        .search-form input {
-            width: 300px; /* Make the input a bit wider */
-            height: 20px;
-        }
-        .search-form button, .search-form .show-all-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            margin-bottom: 5px;
-            height: 30px;
-        }
-        .search-form button:hover, .search-form .show-all-button:hover {
-            background-color: #45a049;
-        }
-        .show-all-button {
-            width: auto; /* Allow the width to adjust based on content */
-            align-content: center;
-            height: 15px;
-        }
-    </style>    
-</head>
-<body>
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1>Productos</h1>
         <form method="get" class="search-form">
@@ -120,5 +73,4 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
+{% endblock %}
