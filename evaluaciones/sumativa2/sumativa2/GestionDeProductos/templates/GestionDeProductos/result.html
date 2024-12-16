@@ -23,12 +23,12 @@
                 <td>{{ producto.codigo }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.precio }}</td>
-                <td>{{ producto.categoria.name }}</td>
-                <td>{{ producto.marca.name }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>{{ producto.marca }}</td>
                 <td>
                     <ul>
-                        {% for caracteristica in producto.productocaracteristica_set.all %}
-                            <li>{{ caracteristica.caracteristica.name }}: {{ caracteristica.valor }}</li>
+                        {% for caracteristica in producto.caracteristicas %}
+                            <li>{{ caracteristica.name }}: {{ caracteristica.valor }}</li>
                         {% endfor %}
                     </ul>
                 </td>

@@ -15,6 +15,10 @@ Clonar el repositorio: `git clone https://github.com/BeaFD/ti2041-2024.git`
 Abrir carpeta del projecto en evaluaciones/sumativa1
 Ejecutar el servidor desde la terminal: `python manage.py runserver`
 
+Usuario Admin:
+username: admin
+password: inacap2024
+
 ---------------------------------------------------------------------------------------------------------------------
 
 Funcionamiento
@@ -50,3 +54,11 @@ El debug se mantiene en True, debido a que el debug False necesita la configurac
 CORS
 
 Los headers CORS quedan configurados con todos los hosts habilitados para no tener conflictos en el entorno de desarrollo.
+
+---------------------------------------------------------------------------------------------------------------------
+
+APIs
+
+Para ver la documentación de Django Ninja, acceder a localhost:8000/api/docs o 127.0.0.1:8000/api/docs. Desde esta vista se pueden ver todos los endpoints, además de probarlos.
+
+Para hacer los tests desde la vista de docs, se debe generar un token utilizando el usuario y contraseña "admin", "inacap2024" dentro del body de la API /token/. Posterior a eso se registra el token con el boton the "Authorize" en el campo de AuthBearer y se pueden testear las demas APIs. 

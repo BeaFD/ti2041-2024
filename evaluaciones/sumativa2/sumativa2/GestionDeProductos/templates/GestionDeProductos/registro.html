@@ -8,7 +8,36 @@
     <h1>Registro Producto</h1>
     <form method="post" id="producto-form">
         {% csrf_token %}
-        {{ registro.as_p }}
+        <div>
+            <label for="codigo">Codigo:</label>
+            <input type="text" id="codigo" name="codigo" value="{{ producto.codigo|default:'' }}" required>
+        </div>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ producto.nombre|default:'' }}" required>
+        </div>
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" value="{{ producto.precio|default:'' }}" required>
+        </div>
+        <div>
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Seleccionar Categoria</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if producto.categoria_id == categoria.id %}selected{% endif %}>{{ categoria.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="marca">Marca:</label>
+            <select id="marca" name="marca" required>
+                <option value="">Seleccionar Marca</option>
+                {% for marca in marcas %}
+                    <option value="{{ marca.id }}" {% if producto.marca_id == marca.id %}selected{% endif %}>{{ marca.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="caracteristica-container">
             <label for="caracteristica-select">Añadir Caracteristica:</label>
             <select id="caracteristica-select">
@@ -22,8 +51,8 @@
         <div id="caracteristicas-container">
             {% for pc in producto_caracteristicas %}
                 <div class="caracteristica-entry">
-                    <label>{{ pc.caracteristica.name }}</label>
-                    <input type="hidden" name="caracteristica" value="{{ pc.caracteristica.id }}">
+                    <label>{{ pc.name }}</label>
+                    <input type="hidden" name="caracteristica" value="{{ pc.id }}">
                     <input type="text" name="valor" value="{{ pc.valor }}" placeholder="Enter value">
                     <button type="button" onclick="removeCaracteristica(this)">Quitar</button>
                 </div>
@@ -38,9 +67,10 @@
         var nombre = document.querySelector('input[name="nombre"]');
         var precio = document.querySelector('input[name="precio"]');
         var codigo = document.querySelector('input[name="codigo"]');
+        var categoria = document.querySelector('select[name="categoria"]');
         var marca = document.querySelector('select[name="marca"]');
 
-        if (!nombre.value || !precio.value || !codigo.value || !marca.value) {
+        if (!nombre.value || !precio.value || !codigo.value || !categoria.value || !marca.value) {
             alert('Por favor, complete todos los campos obligatorios.');
             event.preventDefault();
         }
