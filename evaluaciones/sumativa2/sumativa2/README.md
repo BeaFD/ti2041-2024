@@ -23,7 +23,7 @@ password: inacap2024
 
 Funcionamiento
 
-Abrir localhost:8080/ o 127.0.0.1:8080/
+Abrir localhost:8000/ o 127.0.0.1:8000/
 
 Es necesario iniciar sesión antes de empezar. Todo es navegable mediante botones. Cualquier usuario que ingrese con sus credenciales de inicio puede visualizar los productos, sin embargo, solo los usuarios con el permiso de ADMIN_PRODUCTS puede eliminar, editar o eliminar.
 
