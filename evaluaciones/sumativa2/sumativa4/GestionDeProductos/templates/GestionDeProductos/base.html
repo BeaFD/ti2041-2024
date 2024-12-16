@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'GestionDeProductos/styles.css' %}">
+    <style>
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .site-header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .site-header nav ul li {
+            margin-left: 20px;
+        }
+
+        .site-header nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .site-header nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        .logout-form {
+            display: inline;
+        }
+
+        .logout-form button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 7px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .logout-form button:hover {
+            background-color: #575757;
+        }
+
+        .content {
+            padding-top: 200px; /* Adjust this value based on the header height */
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Gestion De Productos</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'admin:index' %}">Administracion</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar Sesion</button>
+                        </form>
+                    </li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

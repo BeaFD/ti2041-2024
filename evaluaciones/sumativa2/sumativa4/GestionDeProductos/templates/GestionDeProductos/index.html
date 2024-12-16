@@ -1,0 +1,76 @@
+{% extends 'GestionDeProductos/base.html' %}
+{% load static %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Productos</h1>
+        <form method="get" class="search-form">
+            <div>
+                <label for="filter_type">Filtrar por:</label>
+                <select name="filter_type" id="filter_type">
+                    <option value="">Filtro</option>
+                    <option value="nombre" {% if request.GET.filter_type == 'nombre' %}selected{% endif %}>Nombre</option>
+                    <option value="codigo" {% if request.GET.filter_type == 'codigo' %}selected{% endif %}>Codigo</option>
+                    <option value="marca" {% if request.GET.filter_type == 'marca' %}selected{% endif %}>Marca</option>
+                    <option value="categoria" {% if request.GET.filter_type == 'categoria' %}selected{% endif %}>Categoria</option>
+                    {% for caracteristica in caracteristicas %}
+                        <option value="{{ caracteristica.name }}" {% if request.GET.filter_type == caracteristica.name %}selected{% endif %}>{{ caracteristica.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="search">Buscar:</label>
+                <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+            </div>
+            <div>
+                <button type="submit">Buscar</button>
+            </div>
+            <div>
+                <a href="/productos/" class="show-all-button">Mostrar Todo</a>
+            </div>
+        </form>
+        <div>
+            <a href="/productos/registrar">Nuevo Producto</a>
+        </div>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Marca</th>
+                    <th>Caracteristicas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.categoria }}</td>
+                        <td>{{ producto.marca }}</td>
+                        <td>
+                            <ul>
+                                {% for caracteristica in producto.caracteristicas %}
+                                    <li>{{ caracteristica.name }}: {{ caracteristica.valor }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="{% url 'producto_edit' producto.codigo %}">Editar</a>
+                            <form action="{% url 'producto_delete' producto.codigo %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
