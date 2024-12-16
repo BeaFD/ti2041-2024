@@ -12,7 +12,7 @@ Python:
 Ejecutar CMD como administrador y ejecutar `python -m pip install Django==5.1.1`
 
 Clonar el repositorio: `git clone https://github.com/BeaFD/ti2041-2024.git`
-Abrir carpeta del projecto en evaluaciones/sumativa1
+Abrir carpeta del projecto en evaluaciones/Sumativa4/sumativa4
 Ejecutar el servidor desde la terminal: `python manage.py runserver`
 
 Usuario Admin:
